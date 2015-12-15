@@ -2,8 +2,8 @@
 /**
  * The model for radar scan and accumulator
  * 
- * @author @gcschmit
- * @version 19 July 2014
+ * @author @ezaba   
+ * @version 15   July 2014
  */
 public class Radar
 {
@@ -34,11 +34,14 @@ public class Radar
     public Radar(int rows, int cols)
     {
         // initialize the currentScan 2D array and the accumulator 2D array
+        this.currentScan = new boolean[rows][cols];
         
-        
+        this.accumulator = new int[rows][cols];             
         //
         // !!! add code here !!!
         //
+        
+        
         
         
         // randomly set the location of the monster (can be explicity set through the
@@ -62,6 +65,20 @@ public class Radar
         //    3. inject noise into the grid
         //    4. update the accumulator 2D array based on the state of the currentScan 2D array
         //    5. increment the numScans instance variable
+        
+        
+        
+        //Creates the array of booleans with all false
+        for (int i = 0; i<currentScan.length; i++)
+        {
+            for (int j = 0; j<currentScan[i].length; j++)
+            {
+                this.currentScan[i][j] = false;
+            
+            }
+        }
+        
+
         
         
         //
@@ -165,12 +182,25 @@ public class Radar
         // The noiseFraction instance variable is the probability that a given cell will be
         // detected as a false positive. Use the Math.random method to determine if each cell should be set
         // as a false positive.
-        
-        
-        //
+        //a
         // !!! add code here !!!
         //
+        for (int i = 0; i<currentScan.length; i++)
+        {
+            for (int j = 0; j<currentScan[i].length; j++)
+            {
+                
+                if (Math.random() <= this.noiseFraction){
+                    this.currentScan[i][j] = true;
+                    
+                }
+                
+                
+                
+            
+            }
         
+        }
         
     }
     
