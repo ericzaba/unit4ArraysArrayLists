@@ -3,7 +3,7 @@
  * The model for radar scan and accumulator
  * 
  * @author @ezaba   
- * @version 15   July 2014
+ * @version 15   December 2015
  */
 public class Radar
 {
@@ -39,10 +39,6 @@ public class Radar
         this.accumulator = new int[rows][cols];             
         //
         // !!! add code here !!!
-        //
-        
-        
-        
         
         // randomly set the location of the monster (can be explicity set through the
         //  setMonsterLocation method for the unit test
@@ -77,11 +73,34 @@ public class Radar
             
             }
         }
-        
 
         
+        this.currentScan[this.monsterLocationRow][this.monsterLocationCol] = true;
+        this.injectNoise();
         
-        //
+        
+        /////ACCCUMULATOR
+        for (int i = 0; i<currentScan.length; i++){
+            for (int j = 0; j<currentScan[i].length; j++){
+                if (this.currentScan[i][j] == false){
+                    this.accumulator[i][j]++;
+                    
+                }
+                
+                
+            }
+        
+        }
+      
+        
+        for (int i = 0; i<currentScan.length; i++){
+        
+        
+            this.numScans = this.numScans++;
+        }
+        
+         this.numScans = this.numScans++;
+                          //
         // !!! add code here !!!
         //
         
@@ -194,14 +213,7 @@ public class Radar
                     this.currentScan[i][j] = true;
                     
                 }
-                
-                
-                
-            
             }
-        
         }
-        
     }
-    
 }
