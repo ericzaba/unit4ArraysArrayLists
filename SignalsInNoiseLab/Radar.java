@@ -93,13 +93,7 @@ public class Radar
         }
       
         
-        for (int i = 0; i<currentScan.length; i++){
-        
-        
-            this.numScans = this.numScans++;
-        }
-        
-         this.numScans = this.numScans++;
+                this.numScans++;
                           //
         // !!! add code here !!!
         //
