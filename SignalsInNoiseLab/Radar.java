@@ -3,7 +3,7 @@
  * The model for radar scan and accumulator
  * 
  * @author @ezaba   
- * @version 15   December 2015
+ * @version 17 December 2015
  */
 public class Radar
 {
@@ -79,28 +79,35 @@ public class Radar
         this.injectNoise();
         
         
-        /////ACCCUMULATOR
+        /////ACCUMULATOR
         for (int i = 0; i<currentScan.length; i++){
             for (int j = 0; j<currentScan[i].length; j++){
-                if (this.currentScan[i][j] == false){
+                if (this.currentScan[i][j] == true){
                     this.accumulator[i][j]++;
-                    
                 }
-                
-                
+            }
+            
+            
+            
+            
+            
+        }
+        
+        //Goes throught the ints after final execution, checks to see if anyone is 99
+        
+        for (int i = 0; i<currentScan.length; i++){
+            for (int j = 0; j<currentScan[i].length; j++){
+            if (this.accumulator[i][j]==100){
+                System.out.println("The monster is found at " + i + " " + j);
+            
             }
         
         }
-      
+        //adds one to the number of scans.
         
-                this.numScans++;
-                          //
-        // !!! add code here !!!
-        //
-        
-        
+       
     }
-
+    this.numScans++;
     /**
      * Sets the location of the monster
      * 
@@ -108,7 +115,10 @@ public class Radar
      * @param   col     the column in which the monster is located
      * @pre row and col must be within the bounds of the radar grid
      */
+
+}
     public void setMonsterLocation(int row, int col)
+
     {
         // remember the row and col of the monster's location
         monsterLocationRow = row;
@@ -117,7 +127,7 @@ public class Radar
         // update the radar grid to show that something was detected at the specified location
         currentScan[row][col] = true;
     }
-    
+
      /**
      * Sets the probability that a given cell will generate a false detection
      * 
